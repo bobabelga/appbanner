@@ -1,0 +1,56 @@
+<div id='cssmenu'>
+    <ul id='options'>
+        <li class='active'><a href='#'><span>Home</span></a>
+            <ul id='home'></ul></li>
+        <li class='has-sub'><a href='#'><span>Products</span></a>
+            <ul id='product_list'></ul></li>
+        <li class='has-sub'><a href='#'><span>Company</span></a>
+            <ul id='company'></ul></li>
+        <li class='has-sub'><a href='#'><span>Contact</span></a>
+            <ul id='contact'></ul></li>
+    </ul>
+</div>
+var cwData = {
+    "product": [
+        {
+            "category": "Product 1",
+            "items": [
+                {
+                    "name": "Item 1.1"
+                },
+                {
+                    "name": "Item 1.2"
+                }
+            ]
+        },
+        {
+            "category": "Product 2",
+            "items": [
+                {
+                    "name": "Item 2"
+                }
+            ]
+        },
+        {
+            "category": "Product 3",
+            "items": [
+                {
+                    "name": "Item 3"
+                }
+            ]
+        }
+    ]
+};
+
+$.each(cwData.product, function (i, product) {
+            var option_cate = '<li class="item"><a href="#">' + product.category + '</a></li>';
+            // Add the product names
+            var details = '<ul class="details">';
+            $.each(product.items, function (i, item) {
+                details += '<li class="name"><a href="#">' + item.name + '</a></li>'; 
+            });
+    
+    details += '</ul>';
+    
+    $(option_cate).appendTo('#product_list').append(details);
+        });
